@@ -1,0 +1,88 @@
+<!--created by Steven Chavez 2018 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+<!--Google Fonts-->
+<link href="https://fonts.googleapis.com/css?family=Cinzel|Exo+2|Merriweather" rel="stylesheet">
+
+<!--CSS Stylesheets-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+<link rel="stylesheet" href="mathFunc.css" />
+
+
+<!--Bootstrap Scripts-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+  <!--jQuery Script-->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  
+  <title>Math Functions</title>
+</head>
+
+<body>
+
+
+<!--Create Bootstrap container for smooth transition between different device screens-->
+<div class="container-fluid">
+  <div class="text-center">
+  <h1 id="header">Math Functions</h1>
+	<p class="text-justify text-center">You can select from math functions<br> There are two inputs for the basic math functions</p>
+	<div id="functions" class="input-group mb-3 mr-auto ml-auto">
+  <div class="input-group-prepend text-center">
+	<label class="input-group-text text-white bg-dark" for="function-select">Math</label>
+  </div>
+  <select class="custom-select" id="function-select">
+	<option selected>Choose...</option>
+  <optgroup label="--Math Functions--">
+	<option value="add" id="add">Addition</option>
+	<option value="subtract" id="subtract">Subtraction</option>
+	<option value="multiply" id="multiply">Multiplication</option>
+	<option value="divide" id="divide">Division</option>
+  </optgroup>
+  <optgroup label="--Advanced Math--">
+	<option value="square" id="square" >Square</option>
+	<option value="cubed" id="cubed">Cubed</option>
+	<option value="root" id="root">Square Root</option>
+  </optgroup>
+  </select>
+</div>
+	<br>
+	<p class="text-justify text-center">If you select square, cubed, or square root <br />only Input 1 will take a value and submit it. <br />You can hit <kbd>Enter</kbd> to submit as well. </p>
+	<br />
+	<div class="input-group w-50 mb-3 ml-auto mr-auto">
+  <div class="input-group-prepend">
+	<span class="input-group-text text-white bg-dark" id="input1label">Input 1:</span>
+  </div>
+  <input type="text" class="form-control" id="input1" pattern='[0-9]*' aria-label="input1" aria-describedby="input1">
+  </div>
+  <div class="input-group w-50 mb-3 ml-auto mr-auto">
+  <div class="input-group-prepend">
+	<span class="input-group-text text-white bg-dark" id="input2label">Input 2:</span>
+  </div>
+  <input type="text" class="form-control" id="input2" 
+  pattern='[0-9]*' aria-label="input2" aria-describedby="input2">
+</div>
+ 
+	<br />
+	<button type="button" class="btn btn-primary w-50" id="button">=</button>
+	<div>
+		<p class="mt-5" id="answer"></p>
+	</div>
+  </div>
+  <div class="fixed-bottom"><p class="text-left" id="created">Created by<br/>Steven Chavez<br/>2018</p></div>
+  </div>
+  
+  <script src="mathFunc.js"></script>
+
+</body>
+
+</html>
