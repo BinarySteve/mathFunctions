@@ -124,33 +124,168 @@ function mathChoice() {
 	return Math.sqrt(a).toFixed(5);//sets decimal place
   }
   
+/****created by Steven Chavez 2018****/
+
+
+$(()=> {
+  $("#function-select")
+	.on("change", ()=> {
+	  disableFunc();
+  
+	});
+  $("button").on("click", ()=> {
+	mathChoice();
+  });
+  //creates event listener for key up after press on the enter key to run mathChoice function
+  $(".input-group").on("keyup", (e)=> {
+	if (e.preventDefault()) {
+	  return;
+	}
+
+	if (e.which === "Enter" || e.which === "Ent" || e.which === 13) {
+	  mathChoice();
+	}
+  });
+});
+
+
+//----Math selection function that uses 3 functions within to evaluate choice and output of answer----\\
+function mathChoice() {
+  let x = $("#function-select").val();
+
+  if (x === "add") {
+	addingFunc();
+	printVal();
+	resetFunc();
+	
+  } else if (x === "subtract") {
+	subtractFunc();
+	printVal();
+	resetFunc();
+	
+  } else if (x === "multiply") {
+	multiplyFunc();
+	printVal();
+	resetFunc();
+	
+  } else if (x === "divide") {
+	divideFunc();
+	printVal();
+	resetFunc();
+	
+  } else if (x === "square") {
+	squareFunc();
+	printVal();
+	resetFunc();
+	
+  } else if (x === "cubed") {
+	cubeFunc();
+	printVal();
+  resetFunc();
+   
+  } else if (x === "root") {
+	rootFunc();
+	printVal();
+	resetFunc();
+	
+  }
+ }
+ 
+ 
+//----Addition Function example: 10+5 = 15----\\
+  function addingFunc() {
+	//let a = Number($("#input1").val());
+	//let b = Number($("#input2").val());
+	return a + b;
+  }
+  
+  
+//----Subtraction Function example: 10-5 = 15----\\
+  function subtractFunc() {
+	let a = Number($("#input1").val());
+	let b = Number($("#input2").val());
+	return a - b;
+  }
+  
+  
+//----Multiplication Function example 10x5 = 50----\\
+  function multiplyFunc() {
+	let a = Number($("#input1").val());
+	let b = Number($("#input2").val());
+	return a * b;
+  }
+  
+  
+//----Division Function example 10/5 = 2----\\
+  function divideFunc() {
+	let a = Number($("#input1").val());
+	let b = Number($("#input2").val());
+	if (a/b === Infinity || a === 0 && b === 0) {//fixes divide by zero error which gives infinity & fixes issue when no number is entered output gives NaN
+		return 0;
+		//check to see if decimals have zeros than print out whole number instead of decimals with all zeros
+	}else {
+		if ((a/b)% 1 === 0) {
+			return Math.floor(a/b);
+		}
+	return Number(a / b).toFixed(5);//sets decimal place
+	}
+  }
+
+
+//----Square Function example: 5²= 25----\\
+  function squareFunc() {
+	let a = Number($("#input1").val());
+	return a * a;
+  }
+  
+  
+//----Cube Function example: 5*5*5 = 125----\\
+  function cubeFunc() {
+	let a = Number($("#input1").val());
+	return a * a * a;
+  }
+
+
+//----Square Root Function example: √25 = 5----\\
+  function rootFunc() {
+	let a = Number($("#input1").val());
+	//check to see if decimals have zeros than print out whole number instead of decimals with all zeros
+	if (Math.sqrt(a)%1 === 0) {
+		return Math.floor(Math.sqrt(a));
+	} 
+	else 
+	{
+		return Math.sqrt(a).toFixed(5);//sets decimal place
+	}
+	
+  }
+  
   
 //----Function that prints answers----\\
   function printVal() {
 	let x = $("#function-select").val();
 	if (x === "add") {
-	$("#answer").html("<var>" + Number($("#input1").val())+"</var> "+ "<var> <var>+</var> "+Number($("#input2").val())+ "</var> <var>=</var> " + addingFunc());
+	$("#answer").html(`<var> ${Number($("#input1").val())}</var> <var>+</var> <var>${Number($("#input2").val())}</var> <var>=</var> ${addingFunc()}`);
 	
   } else if (x === "subtract") {
-	$("#answer").html("<var>" + Number($("#input1").val())+"</var> "+ "<var> <var>-</var> "+Number($("#input2").val())+ "</var> <var>=</var> " +
-	subtractFunc());
+	$("#answer").html(`<var> ${Number($("#input1").val())}</var> <var>-</var> <var>${Number($("#input2").val())}</var> <var>=</var> ${subtractFunc()}`);
 	
 	
   } else if (x === "multiply") {
-	$("#answer").html("<var>" + Number($("#input1").val())+"</var> "+ "<var> <var>x</var> "+Number($("#input2").val())+ "</var> <var>=</var> " +
-	multiplyFunc());
+	$("#answer").html(`<var> ${Number($("#input1").val())}</var> <var>x</var> <var>${Number($("#input2").val())}</var> <var>=</var>
+	${multiplyFunc()}`);
 	
   } else if (x === "divide") {	
-  $("#answer").html("<var>" + Number($("#input1").val())+"</var> "+ "<var> <var>/</var> "+Number($("#input2").val())+ "</var> <var>=</var> " + divideFunc());
+  $("#answer").html(`<var> ${Number($("#input1").val())}</var> <var>/</var> <var>${Number($("#input2").val())}</var> <var>=</var> ${divideFunc()}`);
 	
   } else if (x === "square") {	
-  $("#answer").html("<var>" + Number($("#input1").val())+"</var> &sup2"+ "<var>=</var> " + squareFunc());
+  $("#answer").html(`<var> ${Number($("#input1").val())}</var> &sup2 <var>=</var> ${squareFunc()}`);
 	
   } else if (x === "cubed") {
-	$("#answer").html("<var>" + Number($("#input1").val())+"</var> &sup3"+ "<var>=</var> " + cubeFunc());
+	$("#answer").html(`<var> ${Number($("#input1").val())}</var> &sup3 <var>=</var> ${cubeFunc()}`);
    
   } else if (x === "root") {
-	$("#answer").html("<var>&#8730</var> <var>" + Number($("#input1").val())+"</var> <var>=</var> " +rootFunc());
+	$("#answer").html(`<var>&#8730</var> <var>${Number($("#input1").val())}</var> <var>=</var> ${rootFunc()}`);
 	}
 	}
 	
@@ -175,3 +310,4 @@ var x = $("#function-select").val();
 	$("#input2").removeAttr("disabled");
   }
 }
+
